@@ -1,0 +1,351 @@
+# ==============================
+
+# Python
+
+# ==============================
+
+**pycache**/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Python virtual environments
+
+.venv/
+venv/
+env/
+ENV/
+backend/venv/
+backend/.venv/
+
+# ==============================
+
+# Environment / Secrets
+
+# ==============================
+
+.env
+.env.*
+!.env.example
+
+# API keys / credentials
+
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# ==============================
+
+# Machine Learning
+
+# ==============================
+
+# Trained models
+
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.keras
+*.pt
+*.pth
+*.onnx
+
+# ML experiment outputs
+
+mlruns/
+wandb/
+runs/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# ==============================
+
+# Data
+
+# ==============================
+
+# Raw datasets
+
+data/raw/*
+!data/raw/.gitkeep
+
+# Large processed datasets
+
+data/processed/*
+!data/processed/.gitkeep
+
+# Temporary/sample generated files
+
+data/tmp/
+data/output/
+
+# Satellite imagery
+
+*.tif
+*.tiff
+*.jp2
+*.hdf
+*.h5
+
+# Large archives
+
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# ==============================
+
+# GIS
+
+# ==============================
+
+# Large GIS/raster files
+
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.gpkg
+*.geotiff
+
+# Generated GIS files
+
+gis/output/
+gis/temp/
+
+# ==============================
+
+# Frontend
+
+# ==============================
+
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==============================
+
+# Testing / Coverage
+
+# ==============================
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+
+# ==============================
+
+# Logs
+
+# ==============================
+
+*.log
+logs/
+
+# ==============================
+
+# Database
+
+# ==============================
+
+# Local SQLite database
+
+*.sqlite3
+*.sqlite
+
+# Database dumps
+
+*.sql.gz
+*.dump
+
+# ==============================
+
+# OS Files
+
+# ==============================
+
+# Windows
+
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+
+# macOS
+
+.DS_Store
+
+# Linux
+
+*~
+
+# ==============================
+
+# IDE / Editors
+
+# ==============================
+
+.vscode/
+.idea/
+
+# VS Code local history
+
+.history/
+
+# Vim
+
+*.swp
+*.swo
+
+# Temporary files
+
+*.tmp
+*.temp
+
+# ==============================
+
+# Docker
+
+# ==============================
+
+docker-compose.override.yml
+
+# ==============================
+
+# Project-specific generated files
+
+# ==============================
+
+*.geojson.tmp
+*.csv.tmp
+*.json.tmp
+temp/
+tmp/
+
+````
+
+### One important thing for your project
+
+Tumhare structure mein:
+
+```text
+data/
+├── raw/
+├── processed/
+└── sample/
+````
+
+**`sample/` ko GitHub par rakhna chahiye**, because SIH judges/team members ko small sample data se project run/test karna useful hoga.
+
+So don't ignore:
+
+```text
+data/sample/
+```
+
+Similarly, ye files GitHub mein **keep** karo:
+
+```text
+README.md
+requirements.txt
+.env.example
+data/sample/sample_anomalies.csv
+gis/layers/*.geojson
+ml/notebooks/model_training.ipynb
+```
+
+But actual:
+
+```text
+.env
+data/raw/
+large satellite images
+trained *.pkl models
+large processed datasets
+```
+
+GitHub mein nahi daalne chahiye.
+
+### ⚠️ `.env.example` vs `.env`
+
+Keep:
+
+```text
+.env.example
+```
+
+Ignore:
+
+```text
+.env
+```
+
+For example `.env.example`:
+
+```env
+FIRMS_API_KEY=your_api_key_here
+DATABASE_URL=your_database_url_here
+```
+
+Actual `.env`:
+
+```env
+FIRMS_API_KEY=abc123_actual_secret
+DATABASE_URL=actual_database_password
+```
+
+Actual secret **kabhi GitHub par push mat karna**.
+
+### Check karne ke liye
+
+Project root mein:
+
+```powershell
+git status
+```
+
+Aur agar `.env` accidentally tracked ho gaya ho:
+
+```powershell
+git rm --cached .env
+```
+
+Phir:
+
+```powershell
+git status
+```
+
+Is project ke liye **`.gitignore ka main principle** ye rakho:
+
+```text
+SOURCE CODE       → GitHub ✅
+CONFIG TEMPLATE   → GitHub ✅
+SAMPLE DATA       → GitHub ✅
+DOCUMENTATION     → GitHub ✅
+
+API KEYS          → GitHub ❌
+.env              → GitHub ❌
+VIRTUAL ENV       → GitHub ❌
+RAW SATELLITE     → GitHub ❌
+LARGE DATASETS    → GitHub ❌
+TRAINED MODELS    → GitHub ❌
+CACHE/TEMP FILES  → GitHub ❌
+```
