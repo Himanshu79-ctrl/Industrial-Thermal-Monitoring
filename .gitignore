@@ -264,7 +264,6 @@ Similarly, ye files GitHub mein **keep** karo:
 
 ```text
 README.md
-requirements.txt
 .env.example
 data/sample/sample_anomalies.csv
 gis/layers/*.geojson
